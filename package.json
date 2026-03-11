@@ -1,8 +1,13 @@
 {
   "name": "lingua-code",
+  "publisher": "chenjinchi",
   "displayName": "Lingua Code",
   "description": "Insert and manage LINGUA_BLOCK blocks in your code",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cjinchi/lingua-code.git"
+  },
   "engines": {
     "vscode": "^1.75.0"
   },
