@@ -1,0 +1,64 @@
+{
+  "name": "lingua-code",
+  "displayName": "Lingua Code",
+  "description": "Insert and manage LINGUA_CODE_TODO blocks in your code",
+  "version": "0.0.5",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "linguaCode.insertTodoBlock",
+        "title": "Lingua Code: Insert TODO Block"
+      },
+      {
+        "command": "linguaCode.deleteBlock",
+        "title": "Lingua Code: Delete TODO Block"
+      },
+      {
+        "command": "linguaCode.refreshBlocks",
+        "title": "Lingua Code: Refresh Blocks",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "linguaCode.installCommand",
+        "title": "Lingua Code: Install /lingua Command"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "linguaCode.insertTodoBlock",
+        "key": "ctrl+alt+t",
+        "mac": "cmd+alt+t",
+        "when": "editorTextFocus"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "linguaCode",
+          "title": "Lingua Code",
+          "icon": "media/lingua.svg"
+        }
+      ]
+    },
+    "views": {
+      "linguaCode": [
+        {
+          "id": "linguaCodeStatus",
+          "name": "Claude Command",
+          "type": "webview"
+        },
+        {
+          "id": "linguaCodeBlocks",
+          "name": "Lingua Blocks",
+          "type": "webview"
+        }
+      ]
+    }
+  }
+}
