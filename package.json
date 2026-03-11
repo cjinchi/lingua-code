@@ -1,13 +1,17 @@
 {
   "name": "lingua-code",
   "displayName": "Lingua Code",
-  "description": "Insert and manage LINGUA_CODE_TODO blocks in your code",
-  "version": "0.0.5",
+  "description": "Insert and manage LINGUA_BLOCK blocks in your code",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.75.0"
   },
-  "categories": ["Other"],
-  "activationEvents": ["onStartupFinished"],
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
@@ -57,6 +61,15 @@
           "id": "linguaCodeBlocks",
           "name": "Lingua Blocks",
           "type": "webview"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "linguaCode.refreshBlocks",
+          "when": "view == linguaCodeBlocks",
+          "group": "navigation"
         }
       ]
     }

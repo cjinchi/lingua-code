@@ -3,19 +3,20 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
-const LINGUA_COMMAND_CONTENT = `Scan the entire project for all \`__LINGUA_CODE_TODO_START__\` / \`__LINGUA_CODE_TODO_END__\` blocks.
+const LINGUA_COMMAND_CONTENT = `Scan the entire project for all \`__LINGUA_BLOCK_START__\` / \`__LINGUA_BLOCK_END__\` blocks.
 
 For each block found:
 
-1. Read the text content between \`__LINGUA_CODE_TODO_START__\` and \`__LINGUA_CODE_TODO_END__\` — this is a natural language description of the functionality to implement.
-2. Understand the surrounding code context (the file, the position in the file, the language, imports, etc.).
-3. Implement the described functionality as actual working code that fits naturally into the surrounding context.
-4. Replace the **entire block** (including the \`__LINGUA_CODE_TODO_START__\` and \`__LINGUA_CODE_TODO_END__\` marker lines) with the implementation.
+1. Read the text content between \`__LINGUA_BLOCK_START__\` and \`__LINGUA_BLOCK_END__\` — this is the user's request described in natural language.
+2. Read and understand the surrounding code context (the file, the position in the file, the language, imports, the broader project structure, etc.).
+3. Remove the **entire block** (including the \`__LINGUA_BLOCK_START__\` and \`__LINGUA_BLOCK_END__\` marker lines).
+4. Respond to the user's request. You may implement the described functionality at the position where the block was, or at another more appropriate location in the codebase — use your judgment based on context.
 
 Rules:
 - Process ALL lingua blocks found across all files in the project.
-- The implementation must match the coding style, language, and conventions of the surrounding code.
-- Do not leave any \`__LINGUA_CODE_TODO_START__\` or \`__LINGUA_CODE_TODO_END__\` markers behind after processing.
+- Always respond to the user's request described in each block.
+- The implementation (if any) must match the coding style, language, and conventions of the surrounding code.
+- Do not leave any \`__LINGUA_BLOCK_START__\` or \`__LINGUA_BLOCK_END__\` markers behind after processing.
 - If a block's description is ambiguous, make a reasonable interpretation based on context and proceed.
 `;
 
@@ -314,7 +315,7 @@ function activate(context) {
 
     const line = editor.selection.active.line;
     const insertPos = new vscode.Position(line, 0);
-    const block = `__LINGUA_CODE_TODO_START__\n\n__LINGUA_CODE_TODO_END__\n`;
+    const block = `__LINGUA_BLOCK_START__\n\n__LINGUA_BLOCK_END__\n`;
 
     editor.edit(editBuilder => {
       editBuilder.insert(insertPos, block);
@@ -443,9 +444,9 @@ function findBlocks(document) {
 
   for (let i = 0; i < lineCount; i++) {
     const trimmed = document.lineAt(i).text.trim();
-    if (trimmed === '__LINGUA_CODE_TODO_START__') {
+    if (trimmed === '__LINGUA_BLOCK_START__') {
       startLine = i;
-    } else if (trimmed === '__LINGUA_CODE_TODO_END__' && startLine !== null) {
+    } else if (trimmed === '__LINGUA_BLOCK_END__' && startLine !== null) {
       blocks.push({ startLine, endLine: i });
       startLine = null;
     }
