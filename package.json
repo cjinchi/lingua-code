@@ -3,7 +3,8 @@
   "publisher": "chenjinchi",
   "displayName": "Lingua Code",
   "description": "Insert and manage LINGUA_BLOCK blocks in your code",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "icon": "media/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/cjinchi/lingua-code.git"

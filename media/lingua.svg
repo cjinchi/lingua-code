@@ -1,14 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <g fill="none" stroke="black" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Speech bubble -->
-    <path d="M96 112h320a48 48 0 0 1 48 48v144a48 48 0 0 1-48 48H224l-96 64 24-64H96a48 48 0 0 1-48-48V160a48 48 0 0 1 48-48z"/>
-    
-    <!-- Code brackets -->
-    <polyline points="220,200 180,256 220,312"/>
-    <polyline points="292,200 332,256 292,312"/>
-    
-    <!-- Slash -->
-    <line x1="252" y1="190" x2="260" y2="322"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Speech bubble -->
+  <path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-6.5l-4 3.5 1-3.5H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+  <!-- Code brackets -->
+  <polyline points="9,8.5 6.5,11 9,13.5"/>
+  <polyline points="15,8.5 17.5,11 15,13.5"/>
+  <!-- Slash -->
+  <line x1="12.5" y1="7.5" x2="11.5" y2="14.5"/>
 </svg>
